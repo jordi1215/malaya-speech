@@ -118,11 +118,11 @@ class STTFeaturizer:
         self.window_fn = np.hanning
 
         self.mel_basis = librosa.filters.mel(
-            self.sample_rate,
-            self.nfft,
+            sr=self.sample_rate,
+            n_fft=self.n_fft,
             n_mels=self.num_feature_bins,
             fmin=0,
-            fmax=int(self.sample_rate / 2),
+            fmax=self.sample_rate / 2,
         )
 
     def __call__(self, signal):
